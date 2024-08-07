@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellphoneS</title>
+</head>
+<!-- fontawesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Main css -->
+<!-- <link rel="stylesheet" href="../css/remember.css"> -->
+<!-- reponsive css -->
+<link rel="stylesheet" href="/css/reponsive.css">
+<!-- Link Swiper's CSS
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" /> -->
+<!-- heart -->
+<link rel="stylesheet" href="/css/heart.css">
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<body>
+
+    <section class="remember_content">
+        <nav class="remember_col--left">
+            <ul>
+                <li id="smb_home">
+                    <a href="/smember/home">
+                        <div class="rmb_icon"><i class="fa-solid fa-house"></i></div>
+                        <div class="rmb_text">Trang chủ</div>
+                    </a>
+                </li>
+                <li id="smb_order">
+                    <a href="/smember/order/all" >
+                        <div class="rmb_icon"><i class="fa-solid fa-list"></i></div>
+                        <div class="rmb_text">Lịch sử mua hàng</div>
+                    </a>
+                </li>
+                <li id="smb_warranty">
+                    <a href="/smember/warranty" >
+                        <div class="rmb_icon"><i class="fa-solid fa-shield"></i></div>
+                        <div class="rmb_text">Tra cứu bảo hành</div>
+                    </a>
+                </li>
+                <li id="smb_gif">
+                    <a href="/smember/gif" >
+                        <div class="rmb_icon"><i class="fa-solid fa-gift"></i></div>
+                        <div class="rmb_text">Ưu đãi của bạn</div>
+                    </a>
+                </li>
+                <li id="smb_user">
+                    <a href="/smember/user" >
+                        <div class="rmb_icon"><i class="fa-solid fa-user"></i></div>
+                        <div class="rmb_text">Tài khoản của bạn</div>
+                    </a>
+                </li>
+                <li id="smb_feedback">
+                    <a href="/smember/feedback" >
+                        <div class="rmb_icon"><i class="fa-solid fa-heart"></i></div>
+                        <div class="rmb_text">Góp ý - phản hồi</div>
+                    </a>
+                </li>
+                <li id="smb_logout" (click)="btn_logout()">
+                    <div style="display: flex;">
+                        <div class="rmb_icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+                        <div class="rmb_text">Thoát tài khoảng</div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <main class="remember_col--right">
+            <router-outlet></router-outlet>
+        </main>
+    </section>
+</body>
+
+</html>

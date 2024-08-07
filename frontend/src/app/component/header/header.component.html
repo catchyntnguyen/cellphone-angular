@@ -1,0 +1,110 @@
+
+<section class="header">
+    <div class="menu_header">
+        <a class="header_logoimg" routerLink="/"><img class="header_logo" src="./assets/public/img/logocell-removebg-preview.png"
+                alt="">
+        </a>
+        <a class="header_logoimg2" routerLink="/"><img style="width: 60px; display: none;" class="header_logo2"
+                src="./assets/public/img/logo2.png" alt="">
+        </a>
+        <div class="header_list">
+            <i class="fa-regular fa-rectangle-list"></i>
+            <a routerLink="/categories">Danh mục</a>
+        </div>
+        <div class="loca_HCM">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+                <a href=""> Xem giá tại </a><i class="fa-solid fa-chevron-down"></i><br>
+                <a href="">Hồ Chí Minh</a>
+            </div>
+        </div>
+        <label class="input_header" for="">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="inputFilter" type="text" placeholder="Bạn cần gì ?" [(ngModel)]="filterValue" (input)="filter()">
+          </label>
+        <div class="header_phone">
+            <i class="fa-solid fa-phone"></i>
+            <a class="header_3cham " href="">Gọi mua hàng
+                1800.2097</a>
+        </div>
+        <div class="header_car">
+            <i class="fa-solid fa-truck-fast"></i>
+            <a class="header_3cham " href="">Tra cứu
+                đơn hàng</a>
+        </div>
+        <div class="header_bag">
+            <div style="text-align: center; margin-right: 2px;" class="slgiohang"> 
+                <i class="fa-solid fa-bag-shopping"></i>
+                <b id="sosp">{{lengthCart}}</b>
+            </div>
+            <a routerLink="/cart">Giỏ
+                hàng
+            </a>
+        </div>
+        
+        <div class="header_user" id="poupUser" style="display: none;">
+                    <div style=" display: flex; flex-direction: column; line-height: 20px; padding: 5px;" id="btn_popup">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="name_login" >
+                            {{name}}
+                        </span>
+                    </div>
+                    <div class="poup-User hidden" id="popup_user">
+                        <div class="triangle"></div>
+                        <div class="content_poupUser" >
+                            <div>
+                                <div  class="poupUser-item" >
+                                    <div class="poup_left" (click)="hrefSmember()" >
+                                        <div class="poup-img"><img src="../../../assets/public/img/logo2.png" alt=""></div>
+                                        <div class="poup-text">Smember</div>
+                                    </div>
+                                    <div class="poup_right"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                            </div>
+                            <!-- <div class="poupUser-item--end">
+                                <hr>
+                                Đóng
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+        <a href="/login" class="header_user" id="btn_login">
+            <i class="fa-solid fa-user"></i>
+            <span>Đăng Nhập</span>
+        </a>
+    </div>
+</section>
+<div class="popupFilter hidden">
+    <h2 style="margin-left: 10px;">Sản phẩm bạn tìm:</h2>
+    <div class="popupFilter_content" *ngFor="let product of productsFilter">
+        <a routerLink="/product-detail/{{product.id}}" >
+            <div class="popupFilter_img"><img src="../../../assets/public/img-products/{{product.img}}" alt=""></div>
+        <div class="popupFilter_in4">
+            <div class="popupFilter_name">
+                {{product.name}}
+            </div>
+            <div class="popupFilter_price">
+                <div class="ft_priceNew"> {{product.priceNew}}</div>
+                <div class="ft_priceOld">{{product.priceOld}}</div>
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+<div class="chose_login" id="chose">
+    <div>
+        <div class="chose_login--header ">
+            <div><img src="https://cdn2.cellphones.com.vn/213x213,webp,q100/media/wysiwyg/Shipper_CPS.jpg" alt="">
+            </div>
+            <div class="Smember"><b>Smember</b></div>
+            <i class="fa-solid fa-x" onclick="chosecancel()"></i>
+        </div>
+        <div class="chose_login--text">
+            <p>Vui lòng đăng nhập tài khoản Smember để có trải nghiệm mua sắm tốt hơn</p>
+        </div>
+        <div class="chose_login--btn">
+            <div class="login"><a href="?user/login"><b>Đăng nhập ngay</b></a></div>
+            <div class="signup1"><a href="./html/signup.html"><b>Đăng ký</b></a></div>
+        </div>
+    </div>
+</div>

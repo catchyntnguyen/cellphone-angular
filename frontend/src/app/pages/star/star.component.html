@@ -1,0 +1,12 @@
+<div class="flex items-center" (click)="onClick(data)">
+    <div class="relative h-4 w-20 bg-gray-200 dark:bg-gray-600">
+        <div class="absolute top-0 left-0 h-full bg-yellow-400"
+            [style.width.%]="(data / 5) * 100">
+        </div>
+    </div>
+    &nbsp;
+    <p class="text-white">{{data}} Star</p>
+</div>
+<div class="text-white">
+    <button (click)="tang()">+</button>
+</div>

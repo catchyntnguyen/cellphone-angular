@@ -1,0 +1,62 @@
+<main style="width: 100%; margin-left: 40%;" class="remember_col--right">
+   <h1>Chi tiết đơn hàng</h1>
+    <div class="user_reciver">
+        <div class="user">
+            <h2>Người mua</h2>
+            <div class="user--name">Họ và tên: <span>{{userName}}</span></div>
+            <div class="user--phone">Số điện thoại: <span>{{userPhone}}</span></div>
+            <div class="user--phone">Địa chỉ: <span>{{userAddress}}</span></div>
+        </div>
+        <div class="reciver">
+            <h2>Người nhận</h2>
+            <div class="user--name">Họ và tên: <span>{{reciverName}}</span></div>
+            <div class="user--phone">Số điện thoại: <span>{{reciverPhone}}</span></div>
+            <div class="user--phone">Địa chỉ: <span>{{reciverAddress}}</span></div>
+        </div>
+    </div>
+    <div class="remember_order--table">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên hàng hóa</th>
+                    <th>Đơn vị tính</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền chưa thuế</th>
+                    <th>GTGT</th>
+                    <th>Tiền Thuế</th>
+                    <th>Thành tiền gồm thuế</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of orderdetaildetail; let index = index">
+                    <td>{{index}}</td>
+                    <td><p style="width: 100px;  word-wrap: break-word;
+                        overflow-wrap: break-word;">{{ (nameProduct(i.product_id)).name}}</p></td>
+                    <td>Cái</td>
+                    <td>{{ i.quantity}}</td>
+                    <td>{{formatPrice(i.price)}}</td>
+                    <td>{{formatPrice(i.price)}}</td>
+                    <td>10%</td>
+                    <td>{{formatPrice(thue(i.price))}}</td>
+                    <td>{{formatPrice(thue(i.price)+i.price)}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Tổng thành tiền</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{formatPrice(totalAmount)}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="Btn_cancel hidden"  id="Btn_cancel" (click)="Btn_cancel(orderDetails[0].id)">   
+            <button>Hủy đơn</button>
+        </div>
+    </div>
+</main>

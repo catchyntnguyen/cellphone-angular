@@ -1,0 +1,125 @@
+<!-- <p>{{showData | json}}</p>   -->
+<div class="chose_login" id="chose">
+    <div>
+        <div class="chose_login--header ">
+            <div><img src="https://cdn2.cellphones.com.vn/213x213,webp,q100/media/wysiwyg/Shipper_CPS.jpg" alt="">
+            </div>
+            <div class="Smember"><b>Smember</b></div>
+            <i class="fa-solid fa-x" onclick="chosecancel()"></i>
+        </div>
+        <div class="chose_login--text">
+            <p>Vui lòng đăng nhập tài khoản Smember để có trải nghiệm mua sắm tốt hơn</p>
+        </div>
+        <div class="chose_login--btn">
+            <div class="login"><a href="/login"><b>Đăng nhập ngay</b></a></div>
+            <div class="signup1"><a href="/register"><b>Đăng ký</b></a></div>
+        </div>
+    </div>
+</div>
+<main class="basket">
+    <div class="backmenu">
+        <div style="margin-left: 50px;">
+            Giỏ hàng
+        </div>
+        <div class="trove">
+            <i class="fa-solid fa-chevron-left"></i>
+            <a href="/">Trở về</a>
+        </div>
+    </div>
+    <div class="nobuy" id="nobuy">
+        <div class="icon_boring"> <i class="fa-solid fa-face-frown"></i></div>
+        <div class="isgpd">Không có sản phẩn nào tron giỏ hàng, vui lòng quay lại</div>
+        <div class="btn_isgpd"><a style="color: white;" href="/">Quay lại trang chủ</a></div>
+    </div>
+    <div id="showcart">
+        <div class="dacosp">
+            <div class="product_basket" *ngFor="let p of showData; let i = index; ">
+                <div>
+                    <div class="img_product">
+                        <img src="../../../assets/public/img-products/{{p.img}}" alt="Product Image">
+                    </div>
+                    <div class="img_info">
+                        <div class="title_productbasket">
+                            <div><b>
+                                </b></div>
+                            <form action="/delete-to-cart/phone" method="POST">
+                                <div  (click)="xoaProduct(i)" style="cursor: pointer; color: rgb(78, 78, 78);"
+                                    class="fa-solid fa-trash"></div>
+                            </form>
+                        </div>
+                        <div class="price_productbasket">
+                            <div style="color: red;" id="priceNew">
+                                {{ formatPrice(p.priceNew) }}
+                            </div>
+                            <div style="text-decoration: line-through;" id="priceOld">
+                                {{ formatPrice(p.priceOld) }}
+                            </div>
+                            <div style="text-decoration: line-through; color: rgba(138, 138, 138, 0.534);"></div>
+                        </div>
+                        <div class="title_productbasket">
+                            <label>Số lượng: {{p.soluong}}</label>
+                                <div class="btnUPDown">
+                                    <div class="up" (click)="increaseQuantity(i)">
+                                        <div style="cursor: pointer;"><i class="fa-solid fa-chevron-up"></i></div>
+                                      </div>
+                                      <input type="text" [value]="p.soluong" readonly>
+                                      <div class="down" (click)="decreaseQuantity(i)">
+                                        <div style="cursor: pointer;"><i class="fa-solid fa-chevron-down"></i></div>
+                                      </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn_productbasket" id="nutthanhtoan">
+        <div class="btn_productbasket--first">
+            <div><b>Tổng tiến tạm tính</b></div>
+            <div class="btn_productbasket--firstprice" id="thanhtien">
+                {{formatPrice(calculateTotal())}}
+            </div>
+        </div>
+        <div (click)="btn_popup()" class="btn_productbasket--secondaly">TIẾN HÀNG ĐẶT HÀNG</div>
+        <div class="btn_productbasket--final">CHỌN THÊM SẢN PHẢM KHÁC</div>
+    </div>
+    <div class="popupPay slide-top hidden" id="popupPay">
+        <div (click)="popupPayHidden()"  style="float: right; position: relative; right: 80px; top:15px;"><i class="fa-solid fa-x"></i></div>
+        <form id="shippingForm" [formGroup]="checkOutForm" (ngSubmit)="submitForm()" >
+            
+            <div class="form-group">
+                <div style="position: absolute;">
+                    <p id="errorName"  style="position: relative; top: 60px;color: red;"></p>
+                </div>
+                <label for="receiverName">Tên người nhận</label>
+                <input formControlName="receiverName" type="text" name="receiverName" id="receiverName">
+            </div>
+
+            <div class="form-group">
+                <div style="position: absolute;">
+                    <p id="errorEmail"  style="position: relative; top: 60px;color: red;"></p>
+                </div>
+                <label  for="receiverEmail">Email người nhận</label>
+                <input formControlName="receiverEmail" type="text" name="receiverEmail" id="receiverEmail">
+            </div>
+
+            <div class="form-group">
+                <div style="position: absolute;">
+                    <p id="errorPhone"  style="position: relative; top: 60px;color: red;"></p>
+                </div>
+                <label for="receiverPhone">Số điện thoại người nhận</label>
+                <input formControlName="receiverPhone" type="text" name="receiverPhone" id="receiverPhone">
+            </div>
+
+            <div class="form-group">
+                <div style="position: absolute;">
+                    <p id="errorAddress"  style="position: relative; top: 75px;color: red;"></p>
+                </div>
+                <label for="receiverAddress">Địa chỉ người nhận</label>
+                <textarea formControlName="receiverAddress" name="receiverAddress" id="receiverAddress"></textarea>
+            </div>
+
+            <button type="submit"> Xác nhận</button>
+        </form>
+    </div>
+</main>

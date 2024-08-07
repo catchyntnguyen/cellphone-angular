@@ -1,0 +1,60 @@
+<main style="width: 100%; margin-left: 40%;" class="remember_col--right">
+    <div class="remember_information">
+        <div class="img_remember"><img
+                src="https://cdn2.cellphones.com.vn/50x50,webp,q100/media/wysiwyg/Shipper_CPS3_1.png" alt="">
+        </div>
+        <div class="remember_if--content">
+            <h3 class="if--name">{{this.userName}}</h3>
+            <h4 class="if--phone">{{this.userPhone}}</h4>
+            <div class="if--last">SNULL</div>
+        </div>
+    </div>
+    <div class="remember_NumberOrder">
+        <div class="NumberOrder--content">
+            <h1>{{orderDetailsLength.length}}</h1>
+            <p>đơn hàng</p>
+        </div>
+        <hr>
+        <div class="NumberOrder--content">
+            <h1>0đ</h1>
+            <p>Tổng tiền tích lũy</p>
+        </div>
+    </div>
+    <div class="remember_filter">
+        <div class="form-control--data " data-v-1ebd09d2=""><i
+                class="glyphicon glyphicon-calendar fa fa-calendar" data-v-1ebd09d2=""></i> <span
+                data-v-1ebd09d2="">01/12/2020 - 02/06/2024</span><b class="caret" data-v-1ebd09d2=""></b>
+            </div>
+        <div class="list_filter" id="list_filter">
+            <a class="filteChild active_filter" routerLink="/smember/order/all">Tất cả</a>
+            <a class="filteChild" routerLink="/smember/order/waiting">Chờ xác nhận</a>
+            <a class="filteChild" routerLink="/smember/order/Confirmed">Đã xác nhận</a>
+            <a class="filteChild" routerLink="/smember/order/transport">Đang vận chuyển</a>
+            <a class="filteChild" routerLink="/smember/order/finish">Đã giao hàng</a>
+            <a class="filteChild" routerLink="/smember/order/cancel">Đã hủy</a>
+        </div>    
+    </div>
+    <div class="remember_order--table">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày mua</th>
+                    <th>Trạng thái</th>
+                    <th>Giá trị đơn</th>
+                    <th>Chi tiết</th>
+                </tr>
+            </thead>
+            <tbody style=" height: 100px;
+            overflow-y: scroll;">
+                <tr *ngFor="let i of orderDetails">
+                    <td>#{{i.id}}</td>
+                    <td>{{formatDate(i.createdAt)}}</td>
+                    <td >{{getStatusText(i.status)}}</td>
+                    <td>{{formatPrice(i.total)}}</td>
+                    <td style="cursor: pointer;"><a routerLink="/smember/orderDetail/{{i.id}}">Xem</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
